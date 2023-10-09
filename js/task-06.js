@@ -1,13 +1,26 @@
 const inputRef = document.querySelector('#validation-input');
 
 
-const quantitySymbolsInInpnt = (event) => {
+const handleInputBlur = (event) => {
+
     if (event.currentTarget.value.length !== 6) {
         inputRef.classList.add('invalid');
-        return
     }
-    inputRef.classList.add('valid')
+
+    if (event.currentTarget.value.length === 6) {
+        inputRef.classList.add('valid');
+    }
+
+    if (inputRef.classList.contains('invalid') && event.currentTarget.value.length === 6) {
+        inputRef.classList.replace('invalid', "valid");
+    }
+
+    if (inputRef.classList.contains('valid') && event.currentTarget.value.length !== 6) {
+        inputRef.classList.replace('valid', "invalid");
+    }
+
+
 }
 
 
-inputRef.addEventListener('blur', quantitySymbolsInInpnt)
+inputRef.addEventListener('blur', handleInputBlur)
