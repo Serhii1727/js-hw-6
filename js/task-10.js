@@ -13,14 +13,11 @@ const refs = {
  let amount = 0;
 
 const handleInput = (event) => {
-  console.log(event.currentTarget.value)
-  amount = Number(event.currentTarget.value)
-  console.log(amount)
+  amount = Number(event.currentTarget.value)  
 }
 
 const createBoxes = (amount) => {
-  console.log(amount)
-
+  
   let markup;
   let currentNumber = 1;
   let currentPx = 30;
@@ -38,14 +35,14 @@ const createBoxes = (amount) => {
       markup += `<div style='background-color:${color}; width:${currentPx}px; height:${currentPx}px;'></div>`} 
   }
   
-  console.log(markup);
-  
   refs.divBoxesRef.innerHTML = markup;
 }
 
 const removeBoxes = () => {
   refs.divBoxesRef.innerHTML = '';
+  refs.inputRef.value = '';
 }
+
 
 refs.inputRef.addEventListener('input', handleInput);
 refs.buttonCreate.addEventListener('click', () => {
